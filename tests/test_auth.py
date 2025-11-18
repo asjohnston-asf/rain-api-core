@@ -165,16 +165,15 @@ def test_get_header_to_set_auth_cookie(
     header = jwt_manager.get_header_to_set_auth_cookie(profile, '')
     assert header == {
         'SET-COOKIE': (
-            'auth-cookie=COOKIE_VALUE; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Path=/; Secure=True; '
-            'HttpOnly=True; SameSite=Lax'
+            'auth-cookie=COOKIE_VALUE; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Path=/; Secure; HttpOnly; SameSite=Lax'
         )
     }
 
     header = jwt_manager.get_header_to_set_auth_cookie(profile, 'DOMAIN')
     assert header == {
         'SET-COOKIE': (
-            'auth-cookie=COOKIE_VALUE; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Path=/; Domain=DOMAIN; Secure=True; '
-            'HttpOnly=True; SameSite=Lax'
+            'auth-cookie=COOKIE_VALUE; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Path=/; Domain=DOMAIN; Secure; HttpOnly; '
+            'SameSite=Lax'
         )
     }
 
@@ -183,8 +182,8 @@ def test_get_header_to_set_auth_cookie_logout(jwt_manager):
     header = jwt_manager.get_header_to_set_auth_cookie(None, 'DOMAIN')
     assert header == {
         'SET-COOKIE': (
-            'auth-cookie=expired; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; Domain=DOMAIN; Secure=True; '
-            'HttpOnly=True; SameSite=Lax'
+            'auth-cookie=expired; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; Domain=DOMAIN; Secure; HttpOnly; '
+            'SameSite=Lax'
         )
     }
 
