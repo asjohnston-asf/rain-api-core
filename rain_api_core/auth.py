@@ -144,5 +144,8 @@ class JwtManager:
         else:
             expire_date = 'Thu, 01 Jan 1970 00:00:00 GMT'
         return {
-            'SET-COOKIE': f'{self.cookie_name}={cookie_value}; Expires={expire_date}; Path=/{cookie_domain}; Secure=True; HttpOnly=True; SameSite=Lax'
+            'SET-COOKIE': (
+                f'{self.cookie_name}={cookie_value}; Expires={expire_date}; Path=/{cookie_domain}; Secure=True; '
+                'HttpOnly=True; SameSite=Lax'
+            )
         }
